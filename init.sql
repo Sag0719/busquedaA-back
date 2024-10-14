@@ -1,3 +1,26 @@
+-- Crear tabla FlightClass
+CREATE TABLE FlightClass (
+                             idFlightClass SERIAL PRIMARY KEY,
+                             flightClassName VARCHAR(50),
+                             luggageAmount INT,
+                             extraPrice INT
+);
+
+-- Crear tabla Flight
+CREATE TABLE Flight (
+                        idFlight SERIAL PRIMARY KEY,
+                        origin VARCHAR(100),
+                        destination VARCHAR(100),
+                        flightClass INT REFERENCES FlightClass(idFlightClass),
+                        flightCode VARCHAR(20),
+                        departureDate DATE,
+                        arrivalDate DATE,
+                        departureTime TIME,
+                        arrivalTime TIME,
+                        price INT
+);
+
+
 -- Inserción de datos en la tabla FlightClass
 INSERT INTO FlightClass (idFlightClass, flightClassName, luggageAmount, extraPrice) VALUES
                                                                                         (1, 'Económica', 1, 0),
